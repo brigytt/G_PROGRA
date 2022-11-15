@@ -1,0 +1,11 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+import urllib.request
+st.title('Datos aleatorios')
+
+@st.experimental_memo
+def download_data():
+  url='https://www.datosabiertos.gob.pe/dataset/catalogo-sismico-1960-2021-igp'
+  filename='data.csv'
+  urllib.request.urlretrieve(url,filename)
