@@ -2,9 +2,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import altair as alt
 import urllib.request
-import base64
 st.header("CATALOGO SISMICO 1960-2021 (IGP)")
 st.markdown("""Este dataset muestra los datos """)
 @st.experimental_memo
