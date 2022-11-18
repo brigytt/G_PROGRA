@@ -1,6 +1,8 @@
 #$ pip install streamlit --upgrade
 import streamlit as st
 import urllib.request
+import pandas as pd
+import numpy as np
 st.header("CATALOGO SISMICO 1960-2021 (IGP)")
 @st.experimental_memo
 def download_data():
@@ -14,4 +16,6 @@ st.write('Dimensiones: ' + str(c.shape[0]) + ' filas y ' + str(c.shape[1]) + ' c
 st.dataframe(c)
 st.subheader("Características del Dataset")
 st.write(c.describe())
+#url del archivo en formato raw
+url = ''
 
