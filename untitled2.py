@@ -4,7 +4,6 @@ import urllib.request
 import pandas as pd
 import numpy as np
 st.header("CATALOGO SISMICO 1960-2021 (IGP)")
-@st.experimental_memo
 
 st.write("Contaminantes q") 
 
@@ -19,7 +18,7 @@ st.write('Dimensiones: ' + str(c.shape[0]) + ' filas y ' + str(c.shape[1]) + ' c
 st.dataframe(c)
 st.subheader("Características del Dataset")
 st.write(c.describe())
-
+@st.experimental_memo
 #url del archivo en formato raw
 url = 'https://raw.githubusercontent.com/brigytt/G_PROGRA/main/Catalogo1960_2021.csv'
 datos = pd.read_csv(url,sep= ',')
