@@ -6,7 +6,7 @@ import numpy as np
 st.header("CATALOGO SISMICO 1960-2021 (IGP)")
 @st.experimental_memo
 
-st.header("Contaminantes") 
+st.header("Contaminantes q") 
 
 def download_data():
    url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
