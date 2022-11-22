@@ -5,6 +5,10 @@ import pandas as pd
 import numpy as np
 st.header("CATALOGO SISMICO 1960-2021 (IGP)")
 @st.experimental_memo
+
+st.title("Fallecidos por COVID-19 - [Ministerio de Salud - MINSA]")
+st.markdown("*Proyecto de Programacion Avanzada 2022-2*")
+
 def download_data():
    url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
    filename="Catalogo1960_2021.xlsx"
