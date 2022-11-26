@@ -28,7 +28,7 @@ if selected == 'Inicio':
       filename="Catalogo1960_2021.xlsx"
       urllib.request.urlretrieve(url,filename)
       df=pd.read_csv('Catalogo1960_2021.xlsx')
-   return df
+      return df
    c=download_data()
    st.write('Dimensiones: ' + str(c.shape[0]) + ' filas y ' + str(c.shape[1]) + ' columnas')
    st.dataframe(c)
