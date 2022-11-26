@@ -18,7 +18,7 @@ with st.sidebar:
       default_index = 0,
    )
 if selected == 'Inicio':
-   st.markdown("<h1 style ='text-align: center'> CATALOGO SISMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
+   st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
    st.markdown("---")
    st.header("Dataset")
    
