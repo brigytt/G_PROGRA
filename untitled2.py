@@ -5,8 +5,8 @@ import pandas as pd
 import numpy as np
 from streamlit_option_menu import option_menu
 
-st.header("CATALOGO SISMICO 1960-2021 (IGP)")
-@st.experimental_memo
+#st.header("CATALOGO SISMICO 1960-2021 (IGP)")
+#@st.experimental_memo
 
 with st.sidebar:
    st.markdown("###")
