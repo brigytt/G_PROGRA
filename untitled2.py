@@ -19,15 +19,15 @@ with st.sidebar:
       default_index = 0,
    )
 if selected == 'Inicio':
-   st.markdown("<h1 style ='text-aling: center'> Título:</h1>", unnsafe_allow_htm1= True)
+   st.markdown("<h1 style ='text-align: center'> Titulo:</h1>", unsafe_allow_htm1= True)
    st.markdown("---")
    st.header("Dataset")
    
    def download_data():
-   url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
-   filename="Catalogo1960_2021.xlsx"
-   urllib.request.urlretrieve(url,filename)
-   df=pd.read_csv('Catalogo1960_2021.xlsx')
+      url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
+      filename="Catalogo1960_2021.xlsx"
+      urllib.request.urlretrieve(url,filename)
+      df=pd.read_csv('Catalogo1960_2021.xlsx')
    return df
    c=download_data()
    st.write('Dimensiones: ' + str(c.shape[0]) + ' filas y ' + str(c.shape[1]) + ' columnas')
@@ -36,9 +36,9 @@ if selected == 'Inicio':
    st.write(c.describe())
 
 #url del archivo en formato raw
-url = 'https://raw.githubusercontent.com/brigytt/G_PROGRA/main/Catalogo1960_2021.csv'
-datos = pd.read_csv(url,sep= ',')
-st.line_chart(data=datos, x='FECHA_UTC', y='MAGNITUD')
+#url = 'https://raw.githubusercontent.com/brigytt/G_PROGRA/main/Catalogo1960_2021.csv'
+#datos = pd.read_csv(url,sep= ',')
+#st.line_chart(data=datos, x='FECHA_UTC', y='MAGNITUD')
 
 
 
