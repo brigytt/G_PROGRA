@@ -38,7 +38,6 @@ if selected == 'Inicio':
    st.write(c.describe())
    
 image = Image.open('imagen 1.jpg')
-st.image(image, caption='La contaminación por el parque automotor antiguo es un problema en Lima Metropolitana', use_column_width=True)
 
 #url del archivo en formato raw
 url = 'https://raw.githubusercontent.com/brigytt/G_PROGRA/main/Catalogo1960_2021.csv'
