@@ -24,4 +24,4 @@ url = 'https://raw.githubusercontent.com/brigytt/G_PROGRA/main/Catalogo1960_2021
 datos = pd.read_csv(url,sep= ',')
 st.line_chart(data=datos, x='FECHA_UTC', y='MAGNITUD')
 
-st.write("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+st.write("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA miguell jasdbaskjd hdkjas dkbjas asdbaksjbdkas")
