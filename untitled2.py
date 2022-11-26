@@ -4,6 +4,7 @@ import urllib.request
 import pandas as pd
 import numpy as np
 from streamlit_option_menu import option_menu
+from PIL import Image
 
 #@st.experimental_memo
 
