@@ -52,7 +52,8 @@ if selected == 'Informe':
       urllib.request.urlretrieve(url,filename)
       df=pd.read_csv('Catalogo1960_2021.xlsx')
       filt=(df["FECHA_UTC"] == selected_year)
-      df[filt]
+      datos = pd.read_csv(url,sep= ',')
+      df[datos,filt]
    download_data()
 if selected == 'Equipo':
    st.markdown("<h1 style ='text-align: center'> ¿Quiénes somos?:</h1>", unsafe_allow_html= True)
