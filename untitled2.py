@@ -66,6 +66,6 @@ if selected == 'Equipo':
    image2 = Image.open('273-2736237_20-lisa-simpson-tumblr-listening-to-headphones-pictures.png')
    col2.header("Brigytt Contreras Melgar")
    col2.image(image2, use_column_width=True)
-   image3 = Image.open('mqdefault.jpg')
+   image3 = Image.open('f238361e-ccb8-48d1-8993-1de25db1c866.jpg')
    col3.header("Daniel Chamorro Grados")
    col3.image(image3, use_column_width=True)
