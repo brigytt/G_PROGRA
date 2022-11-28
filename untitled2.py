@@ -57,7 +57,7 @@ if selected == 'Informe':
 if selected == 'Equipo':
    st.markdown("<h1 style ='text-align: center'> ¿Quiénes somos?:</h1>", unsafe_allow_html= True)
    st.markdown("---")
-   st.write('Somos un grupo de estudiantes del V ciclo de la carrera de Ingeniería Ambiental de la Universidad Peruano Cayetano Heredia (UPCH). Mediante el procesamiento y visualización de datos ')
+   st.write('Somos un grupo de estudiantes del V ciclo de la carrera de Ingeniería Ambiental de la Universidad Peruano Cayetano Heredia (UPCH). Mediante el procesamiento y visualización de datos se brindará todos los parámetros que caracterizan un sismo con el objetivo de constituirse como una base útil para la realización de estudios en sismología.')
    col1, col2, col3= st.columns(3)
    image1 = Image.open('f238361e-ccb8-48d1-8993-1de25db1c866.jpg')
    col1.header("Miguel Calistro Aguilar")
