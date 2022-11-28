@@ -20,7 +20,7 @@ with st.sidebar:
       default_index = 0,
    )
 if selected == 'Inicio':
-   st.markdown("<h1 style ='text-align: center'> CATALOGO SISMICO 1960-2021 n/ (IGP) </h1>", unsafe_allow_html= True)
+   st.markdown("<h1 style ='text-align: center'> CATALOGO SISMICO 1960-2021    (IGP) </h1>", unsafe_allow_html= True)
    st.markdown("---")
    st.write('La base de datos sobre la actividad sísmica en el país fue realizada por el Instituto Geofísico del Perú (IGP) desde el año de 1960 hasta el 2021. El IGP es la institución responsable del monitoreo de la actividad sísmica del país, y contiene todos aquellos sismos percibidos por la población y registrados por la Red Sísmica Nacional desde 1960, fecha en la que se inicia la vigilancia instrumental de la sismicidad en el Perú.')
    st.write('¿Por qué es importante saber sobre los datos de los sismos?')
