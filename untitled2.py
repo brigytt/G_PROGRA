@@ -63,7 +63,7 @@ if selected == 'Equipo':
    image1 = Image.open('f238361e-ccb8-48d1-8993-1de25db1c866.jpg')
    col1.header("Miguel Calistro Aguilar")
    col1.image(image1, use_column_width=True)
-   image2 = Image.open('d705c451-0f41-436b-999e-b9d06fcac4be.jpg')
+   image2 = Image.open('WhatsApp Image 2022-11-27 at 23.17.23.jpeg')
    col2.header("Brigytt Contreras Melgar")
    col2.image(image2, use_column_width=True)
    image3 = Image.open('mqdefault (1).jpg')
