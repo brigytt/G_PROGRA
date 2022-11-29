@@ -67,6 +67,6 @@ if selected == 'Equipo':
    image2 = Image.open('WhatsApp Image 2022-11-27 at 23.17.23.jpeg')
    col2.header("Brigytt Contreras Melgar")
    col2.image(image2, use_column_width=True)
-   image3 = Image.open('hatsApp Image 2022-11-28 at 19.18.22.jpeg')
+   image3 = Image.open('WhatsApp Image 2022-11-28 at 19.18.22.jpeg')
    col3.header("Daniel Chamorro Grados")
    col3.image(image3, use_column_width=True)
