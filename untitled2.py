@@ -52,9 +52,8 @@ if selected == 'Informe':
       filename="Catalogo1960_2021.xlsx"
       urllib.request.urlretrieve(url,filename)
       df=pd.read_csv('Catalogo1960_2021.xlsx')
-      return df
-      #filt=(df["FECHA_UTC"] == selected_year)
-      #df[filt]
+      filt=(df["FECHA_UTC"] == selected_year)
+      return df[filt]
    x=download_data(selected_year)
    st.table(x)
 if selected == 'Equipo':
