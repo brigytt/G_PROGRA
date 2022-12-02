@@ -54,10 +54,9 @@ if selected == 'Informe':
       df=pd.read_csv('Catalogo1960_2021.xlsx')
       filt=(df["FECHA_UTC"] == selected_year)
       return df[filt] 
-   x=download_data(selected_year)
    st.table(x)
-   data_year=download_data(str(selected_year_select))
-   sorted_DEPARTAMENTO=sorted(data_year.DEPARTAMENTO.unique())
+   data_YEAR=download_data(str(selected_year))
+   sorted_DEPARTAMENTO=sorted(data_YEAR.DEPARTAMENTO.unique())
    selected_departamento=st.sidebar.multiselect('departamento',sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
    
 if selected == 'Equipo':
