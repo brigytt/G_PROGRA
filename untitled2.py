@@ -56,6 +56,10 @@ if selected == 'Informe':
       return df[filt] 
    x=download_data(selected_year)
    st.table(x)
+   data_year=x(str(filt_select))
+   sorted_DEPARTAMENTO=sorted(data_year.DEPARTAMENTO.unique())
+   selected_departamento=st.sidebar.multiselect('departamento',sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
+   
 if selected == 'Equipo':
    st.markdown("<h1 style ='text-align: center'> ¿Quiénes somos?:</h1>", unsafe_allow_html= True)
    st.markdown("---")
