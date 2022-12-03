@@ -43,11 +43,16 @@ if selected == 'Inicio':
 if selected == 'Informe':
    st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
    st.markdown("---")
-   st.subheader('FECHA_UTC vs. EPICENTRO')
+   st.subheader('Fecha_UTC vs. Epicentro')
    st.write('La grafica indica.....')
    url = 'https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv'
    datos = pd.read_csv(url,sep= ',')
    st.line_chart(data=datos, x='FECHA_UTC', y='EPICENTRO')
+   st.subheader('Epicentro vs. Magnitud')
+   st.write('La grafica indica.....')
+   url = 'https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv'
+   datos = pd.read_csv(url,sep= ',')
+   st.line_chart(data=datos, x='EPICENTRO', y='MAGNITUD')
    
   
    
