@@ -46,21 +46,49 @@ if selected == 'Inicio':
 if selected == 'Informe':
    st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
    st.markdown("---")
-   selected_year=st.sidebar.selectbox('Fecha', list(reversed(range(1960,2021))))
-   def download_data(selected_year):
-      url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
-      filename="Catalogo1960_2021.xlsx"
-      urllib.request.urlretrieve(url,filename)
-      df=pd.read_csv('Catalogo1960_2021.xlsx')
-      filt=(df["FECHA_UTC"] == selected_year)
-      return df[filt] 
-   data_select=download_data(str(selected_year))
-   sorted_DEPARTAMENTO= sorted(data_select.DEPARTAMENTO.unique())
+   year_select=st.sidebar.selectbox('Fecha', list(reversed(range(1960,2021))))
+   def load_data(year):
+      df=download_data()
+      df=df.astype({'FECHA_UTC':'str'})
+      df['FECHA_CORTE'] = pd.to_numeric(df['FECHA_CORTE'])
+      df['EPICENTRO']= pd.to_numeric(df['EPICENTRO'])
+      grouped=df.groupby(df.FECHA_UTC)
+      df_year=grouped.get_group(year)
+      return df_year
+   data_FECHA=load_data(str(year_select))
+   sorted_DEPARTAMENTO = sorted(data_FECHA.DEPARTAMENTO.unique())
    selected_departamento=st.sidebar.multiselect('Departamento',sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
-   df_selected=data_select[(data_select.DEPARTAMENTO.isin(selected_departamento))]
-   data=remove_columns(df_selected)
+   
+   unique_data=['FECHA_CORTE','EPICENTRO']
+   selected_data= st.sidebar.multiselect('Clasificación', unique_data,unique_data)
+   df_selected=data_FECHA[(data_FECHA.DEPARTAMENTO.isin(selected_departamento))]
+   
+   def remove_columns(dataset, cols):
+      return dataset.drop(cols, axis=1)
+   cols=np.setdiff1d(unique_data, selected_data)
+   st.subheader('Mostrar data de distrito(s) y clasificacion(s) seleccionado(s)')
+   data=remove_columns(df_selected, cols)
    st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
    st.dataframe(data)
+   #-----------------------------------------------------------------------------------------------
+   st.write("------------------------------------------------------------------------------------------------------------------------------------")
+   set_departamentos = np.sort(c['DEPARTAMENTO'].dropna().unique())
+   #Seleccion del departamento
+   opcion_departamento = st.selectbox('Selecciona un departamento', set_departamentos)
+   df_departamentos = c[c['DEPARTAMENTO'] == opcion_departamento]
+   num_filas = len(df_departamentos.axes[0]) 
+
+   #Construccion del set/list de provincias (Valores unicos sin NA)
+   set_provincias = np.sort(df_departamentos['PROVINCIA'].dropna().unique())
+   #Seleccion de la provincia
+   opcion_provincia = st.selectbox('Selecciona una provincia', set_provincias)
+   df_provincias = df_departamentos[df_departamentos['PROVINCIA'] == opcion_provincia]
+   num_filas = len(df_provincias.axes[0]) 
+   set_distritos = np.sort(df_departamentos['DISTRITO'].dropna().unique())
+   #Seleccion de la distrito
+   opcion_distrito = st.selectbox('Selecciona un distrito', set_distritos)
+   df_distritos = df_departamentos[df_departamentos['DISTRITO'] == opcion_distrito]
+   num_filas = len(df_distritos.axes[0])
    
 if selected == 'Equipo':
    st.markdown("<h1 style ='text-align: center'> ¿Quiénes somos?:</h1>", unsafe_allow_html= True)
