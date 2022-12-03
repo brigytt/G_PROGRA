@@ -57,7 +57,8 @@ if selected == 'Informe':
    data_select=download_data(str(selected_year))
    sorted_DEPARTAMENTO= sorted(data_select.DEPARTAMENTO.unique())
    selected_departamento=st.sidebar.multiselect('Departamento',sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
-   data=remove_columns(df_selected, cols)
+   df_selected=data_select[(data_select.DEPARTAMENTO.isin(selected_departamento))]
+   data=remove_columns(df_selected)
    st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
    st.dataframe(data)
    
