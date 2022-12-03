@@ -46,11 +46,11 @@ if selected == 'Inicio':
 if selected == 'Informe':
    st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
    st.markdown("---")
-   year_select=st.sidebar.selectbox('Fecha', list(reversed(range(1960,2021))))
    def download_data():
       url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
       df=pd.read_csv('Catalogo1960_2021.xlsx')
       return df
+   year_select=st.sidebar.selectbox('Fecha', list(reversed(range(1960,2021))))
    def load_data(year):
       df=download_data()
       df=df.astype({'FECHA_UTC':'str'})
