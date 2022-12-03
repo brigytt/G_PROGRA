@@ -66,7 +66,7 @@ if selected == 'Informe':
       df_year = grouped.get_group(year)
       return df_year
 
-   data_by_year=load_data(str(selected_year))
+   data_by_year= load_data(str(selected_year))
 	
    sorted_unique_district = sorted(data_by_year.DEPARTAMENTO.unique())
    selected_district=st.sidebar.multiselect('Departamento', sorted_unique_district, sorted_unique_district)
