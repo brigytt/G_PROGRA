@@ -57,7 +57,8 @@ if selected == 'Informe':
    st.write(c.describe())
    
    def load_data(year):
-      df = download_data()
+      c=download_data()
+      df = st.dataframe(c)
       df=df.astype({'FECHA_UTC':'str'})
       df['MAGNITUD']= pd.to_numeric(df['MAGNITUD'])
       df['LATITUD']= pd.to_numeric(['LATITUD'])
