@@ -54,7 +54,7 @@ if selected == 'Informe':
       df=pd.read_csv('Catalogo1960_2021.xlsx')
       filt=(df["FECHA_UTC"] == selected_year)
       return df[filt] 
-   selected_departamento=st.sidebar.selectbox('Departamento', list(reversed(range(1960,2021))))
+   selected_departamento=st.sidebar.selectbox('Departamento', list(reversed(range('Arequipa','Piura'))))
    data=remove_columns(df_selected, cols)
    st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
    st.dataframe(data)
