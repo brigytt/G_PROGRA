@@ -43,45 +43,49 @@ if selected == 'Inicio':
 if selected == 'Informe':
    st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
    st.markdown("---")
+	       
+   selected_year=st.sidebar.selectbox('FECHA_UTC', list(reversed(range(1960,2022))))
+   def download_data():
+      url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
+      filename="Catalogo1960_2021.xlsx"
+      urllib.request.urlretrieve(url,filename)
+      df=pd.read_csv('Catalogo1960_2021.xlsx')
+      return df
    c=download_data()
    st.write('Dimensiones: ' + str(c.shape[0]) + ' filas y ' + str(c.shape[1]) + ' columnas')
    st.dataframe(c)
    st.subheader("Características del Dataset")
    st.write(c.describe())
    
-   def load_data(year):df = download_data()
-	df=df.astype({'ANO':'str'})
-	df['PM 10'] = pd.to_numeric(df['PM 10'])
-	df['PM 2.5'] = pd.to_numeric(df['PM 2.5'])
-	df['SO2'] = pd.to_numeric(df['SO2'])
-	df['NO2'] = pd.to_numeric(df['NO2'])
-	df['O3'] = pd.to_numeric(df['O3'])
-	df['CO'] = pd.to_numeric(df['CO'])
-	grouped = df.groupby(df.ANO)
+   def load data(year):
+	df = download_data()
+	df=df.astype({'FECHA_UTC':'str'})
+	df['MAGNITUD']= pd.to_numeric(df['MAGNITUD'])
+	df['LATITUD']= pd.to_numeric(['LATITUD'])
+	df['LONGITUD']= pd.to_numeric(['LONGITUD'])
+	grouped = df.groupby(df.FECHA_UTC)
 	df_year = grouped.get_group(year)
 	return df_year
 
-data_by_year=load_data(str(selected_year))
-
-
-sorted_unique_district = sorted(data_by_year.ESTACION.unique())
-selected_district=st.sidebar.multiselect('Distrito', sorted_unique_district, sorted_unique_district)
-
-unique_contaminant=['PM 10', 'PM 2.5', 'SO2', 'NO2', 'O3', 'CO']
-selected_contaminant=st.sidebar.multiselect('Contaminante', unique_contaminant, unique_contaminant)
-
-df_selected=data_by_year[(data_by_year.ESTACION.isin(selected_district))]
-
-def remove_columns(dataset, cols):
+    data_by_year=load_data(str(selected_year))
+	
+   sorted_unique_district = sorted(data_by_year.DEPARTAMENTO.unique())
+   selected_district=st.sidebar.multiselect('Departamento', sorted_unique_district, sorted_unique_district)
+   
+   unique_contaminant=['MAGNITUD', 'LATITUD', 'LONGITUD']
+   selected_contaminant=st.sidebar.multiselect('Contaminante', unique_contaminant, unique_contaminant)
+ 
+   df_selected=data_by_year[(data_by_year.DEPARTAMENTO.isin(selected_district))]
+   def remove_columns(dataset, cols):
 	return dataset.drop(cols, axis=1)
 
-cols=np.setdiff1d(unique_contaminant, selected_contaminant)
+   cols=np.setdiff1d(unique_contaminant, selected_contaminant)
+   st.subheader('Mostrar data de distrito(s) y contaminante(s) seleccionado(s)')
+   data=remove_columns(df_selected, cols)
+   st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
+   st.dataframe(data)
 
-st.subheader('Mostrar data de distrito(s) y contaminante(s) seleccionado(s)')
-data=remove_columns(df_selected, cols)
-st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
-st.dataframe(data)
-   
+		
   
    
 if selected == 'Equipo':
