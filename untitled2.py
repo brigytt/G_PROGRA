@@ -57,7 +57,7 @@ if selected == 'Informe':
    st.subheader("Características del Dataset")
    st.write(c.describe())
    
-   def load data(year):
+   def load_data(year):
 	df = download_data()
 	df=df.astype({'FECHA_UTC':'str'})
 	df['MAGNITUD']= pd.to_numeric(df['MAGNITUD'])
