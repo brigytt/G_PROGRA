@@ -57,12 +57,11 @@ if selected == 'Informe':
    st.write(c.describe())
    
    def load_data(year):
-      c=download_data()
-      df = st.dataframe(c)
+      df=download_data()
       df=df.astype({'FECHA_UTC':'str'})
       df['MAGNITUD']= pd.to_numeric(df['MAGNITUD'])
-      df['LATITUD']= pd.to_numeric(['LATITUD'])
-      df['LONGITUD']= pd.to_numeric(['LONGITUD'])
+      df['LATITUD']= pd.to_numeric([df['LATITUD'])
+      df['LONGITUD']= pd.to_numeric(df['LONGITUD'])
       grouped = df.groupby(df.FECHA_UTC)
       df_year = grouped.get_group(year)
       return df_year
