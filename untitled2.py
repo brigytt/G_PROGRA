@@ -54,6 +54,8 @@ if selected == 'Informe':
       df=pd.read_csv('Catalogo1960_2021.xlsx')
       filt=(df["FECHA_UTC"] == selected_year)
       return df[filt] 
+   data_select=download_data(str(selected_year))
+   sorted_DEPARTAMENTO= sorted(data_select.DEPARTAMENTO.unique())
    selected_departamento=st.sidebar.multiselect('Departamento',sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
    data=remove_columns(df_selected, cols)
    st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
