@@ -43,16 +43,44 @@ if selected == 'Inicio':
 if selected == 'Informe':
    st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
    st.markdown("---")
-   st.subheader('Fecha_UTC vs. Epicentro')
-   st.write('La grafica indica.....')
-   url = 'https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv'
-   datos = pd.read_csv(url,sep= ',')
-   st.line_chart(data=datos, x='FECHA_UTC', y='EPICENTRO')
-   st.subheader('Epicentro vs. Magnitud')
-   st.write('La grafica indica.....')
-   url = 'https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv'
-   datos = pd.read_csv(url,sep= ',')
-   st.line_chart(data=datos, x='EPICENTRO', y='MAGNITUD')
+   c=download_data()
+   st.write('Dimensiones: ' + str(c.shape[0]) + ' filas y ' + str(c.shape[1]) + ' columnas')
+   st.dataframe(c)
+   st.subheader("Características del Dataset")
+   st.write(c.describe())
+   
+   def load_data(year):df = download_data()
+	df=df.astype({'ANO':'str'})
+	df['PM 10'] = pd.to_numeric(df['PM 10'])
+	df['PM 2.5'] = pd.to_numeric(df['PM 2.5'])
+	df['SO2'] = pd.to_numeric(df['SO2'])
+	df['NO2'] = pd.to_numeric(df['NO2'])
+	df['O3'] = pd.to_numeric(df['O3'])
+	df['CO'] = pd.to_numeric(df['CO'])
+	grouped = df.groupby(df.ANO)
+	df_year = grouped.get_group(year)
+	return df_year
+
+data_by_year=load_data(str(selected_year))
+
+
+sorted_unique_district = sorted(data_by_year.ESTACION.unique())
+selected_district=st.sidebar.multiselect('Distrito', sorted_unique_district, sorted_unique_district)
+
+unique_contaminant=['PM 10', 'PM 2.5', 'SO2', 'NO2', 'O3', 'CO']
+selected_contaminant=st.sidebar.multiselect('Contaminante', unique_contaminant, unique_contaminant)
+
+df_selected=data_by_year[(data_by_year.ESTACION.isin(selected_district))]
+
+def remove_columns(dataset, cols):
+	return dataset.drop(cols, axis=1)
+
+cols=np.setdiff1d(unique_contaminant, selected_contaminant)
+
+st.subheader('Mostrar data de distrito(s) y contaminante(s) seleccionado(s)')
+data=remove_columns(df_selected, cols)
+st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
+st.dataframe(data)
    
   
    
