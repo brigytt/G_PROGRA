@@ -56,7 +56,15 @@ if selected == 'Informe':
       return df[filt] 
    data_YEAR=download_data(str(selected_year))
    sorted_DEPARTAMENTO=sorted(data_YEAR.DEPARTAMENTO.unique())
-   selected_departamento=st.sidebar.multiselect('departamento',sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
+   selected_departamento=st.sidebar.multiselect('Departamento',sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
+   df_selected=data_YEAR[(data_YEAR.DEPARTAMENTO.isin(selected_departamento))]
+   def remove_columns(dataset,cols):
+      return dataset.drop(cols, axis=1)
+   cols=np.setdiff1d(selected_data)
+st.subheader('Mostrar data de distrito(s) y clasificacion(s) seleccionado(s)')
+data=remove_columns(df_selected, cols)
+st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
+st.dataframe(data)
    
 if selected == 'Equipo':
    st.markdown("<h1 style ='text-align: center'> ¿Quiénes somos?:</h1>", unsafe_allow_html= True)
