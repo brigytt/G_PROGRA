@@ -60,7 +60,7 @@ if selected == 'Informe':
    df_selected=data_YEAR[(data_YEAR.DEPARTAMENTO.isin(selected_departamento))]
    def remove_columns(dataset,cols):
       return dataset.drop(cols, axis=1)
-   cols=np.setdiff1d(selected_data)
+   cols=np.setdiffld(selected_data)
 st.subheader('Mostrar data de distrito(s) y clasificacion(s) seleccionado(s)')
 data=remove_columns(df_selected, cols)
 st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
