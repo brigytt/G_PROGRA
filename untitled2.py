@@ -60,7 +60,7 @@ if selected == 'Informe':
       df_year=grouped.get_group(year)
       return df_year
    
-   data_FECHA=load_data(str(year_select))
+   data_FECHA =load_data(str(year_select))
    sorted_DEPARTAMENTO = sorted(data_FECHA.DEPARTAMENTO.unique())
    selected_departamento=st.sidebar.multiselect('Departamento',sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
    
