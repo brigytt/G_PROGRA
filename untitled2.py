@@ -60,7 +60,7 @@ if selected == 'Informe':
       df=download_data()
       df=df.astype({'FECHA_UTC':'str'})
       df['MAGNITUD']= pd.to_numeric(df['MAGNITUD'])
-      df['LATITUD']= pd.to_numeric([df['LATITUD'])
+      df['LATITUD']= pd.to_numeric(df['LATITUD'])
       df['LONGITUD']= pd.to_numeric(df['LONGITUD'])
       grouped = df.groupby(df.FECHA_UTC)
       df_year = grouped.get_group(year)
