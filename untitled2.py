@@ -51,7 +51,7 @@ if selected == 'Informe':
       url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
       df=pd.read_csv('Catalogo1960_2021.xlsx')
       return df
-   
+   download_data(year_select)
   
    
 if selected == 'Equipo':
