@@ -52,7 +52,7 @@ if selected == 'Informe':
       df=pd.read_csv('Catalogo1960_2021.xlsx')
       return df
    x=download_data(year_select)
-   s.table(x)
+   st.table(x)
   
    
 if selected == 'Equipo':
