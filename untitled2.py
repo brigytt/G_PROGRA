@@ -46,7 +46,7 @@ if selected == 'Inicio':
 if selected == 'Informe':
    st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
    st.markdown("---")
-   selected_year=
+   
   
    
 if selected == 'Equipo':
