@@ -50,10 +50,8 @@ if selected == 'Informe':
    def download_data(year_select):
       url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
       df=pd.read_csv('Catalogo1960_2021.xlsx')
-      filt=(df['FECHA_CORTE']==Fecha)
-      return df[filt]
-   x=download_data(year_select)
-   st.table(x)
+      return df
+   
   
    
 if selected == 'Equipo':
