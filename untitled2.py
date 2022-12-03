@@ -77,7 +77,7 @@ if selected == 'Informe':
  
    df_selected=data_by_year[(data_by_year.DEPARTAMENTO.isin(selected_district))]
    def remove_columns(dataset, cols):
-	return dataset.drop(cols, axis=1)
+      return dataset.drop(cols, axis=1)
 
    cols=np.setdiff1d(unique_contaminant, selected_contaminant)
    st.subheader('Mostrar data de distrito(s) y contaminante(s) seleccionado(s)')
