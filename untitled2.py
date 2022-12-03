@@ -19,7 +19,7 @@ with st.sidebar:
       menu_icon = 'cast',
       default_index = 0,
    )
-if selected == 'Inicio':
+,f selected == 'Inicio':
    st.markdown("<h1 style ='text-align: center'> CATALOGO SISMICO 1960-2021 (IGP) </h1>", unsafe_allow_html= True)
    st.markdown("---")
    st.write('La base de datos sobre la actividad sísmica en el país fue realizada por el Instituto Geofísico del Perú (IGP) desde el año de 1960 hasta el 2021. El IGP es la institución responsable del monitoreo de la actividad sísmica del país, y contiene todos aquellos sismos percibidos por la población y registrados por la Red Sísmica Nacional desde 1960, fecha en la que se inicia la vigilancia instrumental de la sismicidad en el Perú.')
@@ -54,17 +54,10 @@ if selected == 'Informe':
       df=pd.read_csv('Catalogo1960_2021.xlsx')
       filt=(df["FECHA_UTC"] == selected_year)
       return df[filt] 
-   data_YEAR=download_data(str(selected_year))
-   sorted_DEPARTAMENTO=sorted(data_YEAR.DEPARTAMENTO.unique())
-   selected_departamento=st.sidebar.multiselect('Departamento',sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
-   df_selected=data_YEAR[(data_YEAR.DEPARTAMENTO.isin(selected_departamento))]
-   def remove_columns(dataset,cols):
-      return dataset.drop(cols, axis=1)
-   cols=np.setdiff1d(selected_data)
-st.subheader('Mostrar data de distrito(s) y clasificacion(s) seleccionado(s)')
-data=remove_columns(df_selected, cols)
-st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
-st.dataframe(data)
+   selected_departamento=st.sidebar.selectbox('Departamento', list(reversed(range(1960,2021))))
+   data=remove_columns(df_selected, cols)
+   st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
+   st.dataframe(data)
    
 if selected == 'Equipo':
    st.markdown("<h1 style ='text-align: center'> ¿Quiénes somos?:</h1>", unsafe_allow_html= True)
