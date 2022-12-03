@@ -54,7 +54,7 @@ if selected == 'Informe':
    def load_data(year):
       df=download_data()
       df=df.astype({'FECHA_UTC':'str'})
-      df['FECHA_CORTE'] = pd.to_numeric(df['FECHA_CORTE'])
+      df['FECHA_CORTE'] = pd.to_numeric(df['HORA_UTC'])
       df['EPICENTRO']= pd.to_numeric(df['EPICENTRO'])
       grouped=df.groupby(df.FECHA_UTC)
       df_year=grouped.get_group(year)
@@ -63,7 +63,7 @@ if selected == 'Informe':
    sorted_DEPARTAMENTO = sorted(data_FECHA.DEPARTAMENTO.unique())
    selected_departamento=st.sidebar.multiselect('Departamento',sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
    
-   unique_data=['FECHA_CORTE','EPICENTRO']
+   unique_data=['HORA_UTC','EPICENTRO']
    selected_data= st.sidebar.multiselect('Clasificación', unique_data,unique_data)
    df_selected=data_FECHA[(data_FECHA.DEPARTAMENTO.isin(selected_departamento))]
    
