@@ -43,7 +43,6 @@ if selected == 'Inicio':
 if selected == 'Informe':
    st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
    st.markdown("---")
-	       
    selected_year=st.sidebar.selectbox('FECHA_UTC', list(reversed(range(1960,2022))))
    def download_data():
       url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
@@ -84,10 +83,13 @@ if selected == 'Informe':
    data=remove_columns(df_selected, cols)
    st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
    st.dataframe(data)
+	
+   set_departamentos = np.sort(c['DEPARTAMENTO'].dropna().unique())
+   #Seleccion del departamento
+   opcion_departamento = st.selectbox('Selecciona un departamento', set_departamentos)
+   df_departamentos = c[c['DEPARTAMENTO'] == opcion_departamento]
+   num_filas = len(df_departamentos.axes[0]) 
 
-		
-  
-   
 if selected == 'Equipo':
    st.markdown("<h1 style ='text-align: center'> ¿Quiénes somos?:</h1>", unsafe_allow_html= True)
    st.markdown("---")
