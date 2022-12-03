@@ -58,11 +58,11 @@ if selected == 'Informe':
    
    def load_data(year):
       df=download_data()
-      df=df.astype({'FECHA_UTC':'str'})
+      df=df.astype({'FECHA':'str'})
       df['MAGNITUD']= pd.to_numeric(df['MAGNITUD'])
       df['LATITUD']= pd.to_numeric(df['LATITUD'])
       df['LONGITUD']= pd.to_numeric(df['LONGITUD'])
-      grouped = df.groupby(df.FECHA_UTC)
+      grouped = df.groupby(df.FECHA)
       df_year = grouped.get_group(year)
       return df_year
 
