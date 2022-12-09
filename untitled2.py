@@ -26,13 +26,13 @@ if selected == 'Inicio':
    st.write('¿Por qué es importante saber sobre los datos de los sismos?')
    col1, col2 =st.columns(2)
    image = Image.open('imagen 1.jpg')
-   col1.write("Los desastres naturales han acompañado el desarrollo de la humanidad a lo largo de la historia; por ello, rescatar y analizar a los sismos desde la historia ayuda a comprender no sólo las acciones humanas en torno a ellos, sino también a descifrar las características y patrones de comportamiento de la actividad sísmica, lo que puede ayudar a los sismólogos, geólogos y otros especialistas a elaborar con mayores datos y precisión, los mapas de riesgo. Además, tener conocimiento sobre estos fenómenos nos permitirá construir una sociedad preventiva, la vulnerabilidad física y la vulnerabilidad social nos ayudará a contar con herramientas –como simulacros y mochilas de emergencia– para estar preparados ante lo que podemos esperar en un evento real.")          
+   col1.info("Los desastres naturales han acompañado el desarrollo de la humanidad a lo largo de la historia; por ello, rescatar y analizar a los sismos desde la historia ayuda a comprender no sólo las acciones humanas en torno a ellos, sino también a descifrar las características y patrones de comportamiento de la actividad sísmica, lo que puede ayudar a los sismólogos, geólogos y otros especialistas a elaborar con mayores datos y precisión, los mapas de riesgo. Además, tener conocimiento sobre estos fenómenos nos permitirá construir una sociedad preventiva, la vulnerabilidad física y la vulnerabilidad social nos ayudará a contar con herramientas –como simulacros y mochilas de emergencia– para estar preparados ante lo que podemos esperar en un evento real.")          
    col2.image(image,use_column_width=True)       
    def download_data():
       url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
       filename="Catalogo1960_2021.xlsx"
       urllib.request.urlretrieve(url,filename)
-      df=pd.read_csv('Catalogo1960_2021.xlsx')
+      df=pd.read_csv('Catalogo1960_2021.csv')
       return df
    c=download_data()
    st.write('Dimensiones: ' + str(c.shape[0]) + ' filas y ' + str(c.shape[1]) + ' columnas')
@@ -43,8 +43,7 @@ if selected == 'Inicio':
 if selected == 'Informe':
    st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
    st.markdown("---")
-   #DATOS POR FECHA
-   
+
    #DATOS POR DEPARTAMENTO
 
    opcion_dataset = st.selectbox('Eliga el Departamento',('SELECCIONAR','AMAZONAS','ANCASH','APURIMAC','AREQUIPA','AYACUCHO','UCAYALI','TUMBES','TACNA','CAJAMARCA','CALLAO','SAN MARTIN','PUNO','CUZCO','PIURA','PASCO','HUANCAVELICA','HUANUCO','ICA','JUNIN','LA LIBERTAD','LAMBAYEQUE','LIMA','LORETO','MADRE DE DIOS','MAR'))
