@@ -19,15 +19,51 @@ with st.sidebar:
       menu_icon = 'cast',
       default_index = 0,
    )
+	
 if selected == 'Inicio':
-   st.markdown("<h1 style ='text-align: center'> CATALOGO SISMICO 1960-2021 (IGP) </h1>", unsafe_allow_html= True)
+   st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP) </h1>", unsafe_allow_html= True)
    st.markdown("---")
    st.info('La base de datos sobre la actividad sísmica en el país fue realizada por el Instituto Geofísico del Perú (IGP) desde el año de 1960 hasta el 2021. El IGP es la institución responsable del monitoreo de la actividad sísmica del país, y contiene todos aquellos sismos percibidos por la población y registrados por la Red Sísmica Nacional desde 1960, fecha en la que se inicia la vigilancia instrumental de la sismicidad en el Perú.')
-   st.write('¿Por qué es importante saber sobre los datos de los sismos?')
+   st.subheader('¿Por qué es importante saber sobre los datos de los sismos?')
    col1, col2 =st.columns(2)
-   image = Image.open('imagen 1.jpg')
-   col1.info("Los desastres naturales han acompañado el desarrollo de la humanidad a lo largo de la historia; por ello, rescatar y analizar a los sismos desde la historia ayuda a comprender no sólo las acciones humanas en torno a ellos, sino también a descifrar las características y patrones de comportamiento de la actividad sísmica, lo que puede ayudar a los sismólogos, geólogos y otros especialistas a elaborar con mayores datos y precisión, los mapas de riesgo. Además, tener conocimiento sobre estos fenómenos nos permitirá construir una sociedad preventiva, la vulnerabilidad física y la vulnerabilidad social nos ayudará a contar con herramientas –como simulacros y mochilas de emergencia– para estar preparados ante lo que podemos esperar en un evento real.")          
-   col2.image(image,use_column_width=True)       
+   image = Image.open('tumblr_nqmuugiAIV1qio57co1_500.webp')
+   col1.info('Los desastres naturales han acompañado el desarrollo de la humanidad a lo largo de la historia; por ello, el rescatar y analizar a los sismos desde el transcurso de los años ayuda a comprender, no solo las acciones humanas en torno a ellos, sino también a descifrar las características y patrones de comportamiento de la actividad sísmica, lo que puede ayudar a los sismólogos, geólogos y otros especialistas a elaborar con mayores datos y precisión, los mapas de riesgo.')          
+   col2.image(image,use_column_width=True)    
+
+   st.subheader('Recomendaciones ante Sismos')
+   col3,col4 =st.columns(2)
+   col3.info('De prevención')
+   col3.write('1.Revisa y corrige el estado de las instalaciones de gas, agua y sistema eléctrico.')
+   col3.write('2.Libera de obstáculos las puertas y pasillos y cambia de lugar aquello que pueda lastimar o caer encima.')
+   col3.write('3.Reúnete con tu familia y vecinos para planificar acciones de prevención y respuesta.')
+   col3.write('4.Ten lista tu maletín o mochila para emergencias.')
+   col3.write('5.En tu edificio, coordina que haya luces de emergencia, que las puertas de las escaleras de escape se abran hacia afuera y que los pasillos estén libres de obstáculos.')
+   col3.write('6.No utilice los ascensores.')
+   image = Image.open('recomendaciones-ante-sismos-1-300x300.jpeg')
+   col4.image(image,use_column_width=True) 
+   
+   col5,col6 =st.columns(2)
+   col5.info('En la emergencia')
+   col5.write('1.Conserva la calma, evalúa la situación y ayuda a los demás.')
+   col5.write('2.Aléjate de las ventanas, repisas y todo aquello que pueda caer en la vía de evacuación.')
+   col5.write('3.Si no puedes salir, ubícate en una zona de seguridad hasta la evacuación.')
+   col5.write('4.Lleva contigo tu maletín o mochila de emergencia.')
+   image = Image.open('recomendaciones-ante-sismos-2-300x300.jpeg')
+   col6.image(image,use_column_width=True) 
+	
+   col7,col8 =st.columns(2)
+   col7.info('Acciones inmediatas despúes del sismo')
+   col7.write('1.Revisa si el inmueble está habitable, así como si las conexiones de agua, gas y el suministro eléctrico están en buen estado.')
+   col7.write('2.Haz uso SOLO de su linterna, no encienda fósforos ni velas.')
+   col7.write('3.Utiliza mensajes de texto para comunicarte. Llama por teléfono solo si es necesario y por breves instantes.')
+   col7.write('4.Una vez concluido el sismo, acude al punto de encuentro previamente establecido con tus hijos y familiares.')
+   col7.write('5.Aléjate de la playa lo antes posible debido a la posibilidad de un eventual tsunami.')
+   col7.write('6.Evita mover personas heridas o con fracturas sin ayuda profesional, salvo que corran peligro de lesiones mayores.')
+   image = Image.open('recomendaciones-ante-sismos-3-300x300.jpeg')
+   col8.image(image,use_column_width=True) 
+
+   st.info('El objetivo de la creación de esta página es poder encontrar todos los sismos percibidos por la población y registrados por la Red Nacional desde el año 1960. Asimismo, información que contiene todos los parámetros que caracterizan a un sismo, calculados en las mismas condiciones. ')
+
    def download_data():
       url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
       filename="Catalogo1960_2021.xlsx"
@@ -45,7 +81,6 @@ if selected == 'Informe':
    st.markdown("---")
 
    #DATOS POR DEPARTAMENTO
-
    opcion_dataset = st.selectbox('Eliga el Departamento',('SELECCIONAR','AMAZONAS','ANCASH','APURIMAC','AREQUIPA','AYACUCHO','UCAYALI','TUMBES','TACNA','CAJAMARCA','CALLAO','SAN MARTIN','PUNO','CUZCO','PIURA','PASCO','HUANCAVELICA','HUANUCO','ICA','JUNIN','LA LIBERTAD','LAMBAYEQUE','LIMA','LORETO','MADRE DE DIOS','MAR'))
    estado = '-'
    if opcion_dataset == 'SELECCIONAR':
