@@ -64,6 +64,12 @@ if selected == 'Inicio':
 
    st.info('El objetivo de la creación de esta página es poder encontrar todos los sismos percibidos por la población y registrados por la Red Nacional desde el año 1960. Asimismo, información que contiene todos los parámetros que caracterizan a un sismo, calculados en las mismas condiciones. ')
 
+   
+if selected == 'Informe':
+   st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
+   st.markdown("---")
+
+	
    def download_data():
       url="https://www.datosabiertos.gob.pe/sites/default/files/Catalogo1960_2021.csv"
       filename="Catalogo1960_2021.xlsx"
@@ -75,10 +81,6 @@ if selected == 'Inicio':
    st.dataframe(c)
    st.subheader("Características del Dataset")
    st.write(c.describe())
-   
-if selected == 'Informe':
-   st.markdown("<h1 style ='text-align: center'> CATÁLOGO SÍSMICO 1960-2021 (IGP):</h1>", unsafe_allow_html= True)
-   st.markdown("---")
 
    #DATOS POR DEPARTAMENTO
    opcion_dataset = st.selectbox('Eliga el Departamento',('SELECCIONAR','AMAZONAS','ANCASH','APURIMAC','AREQUIPA','AYACUCHO','UCAYALI','TUMBES','TACNA','CAJAMARCA','CALLAO','SAN MARTIN','PUNO','CUZCO','PIURA','PASCO','HUANCAVELICA','HUANUCO','ICA','JUNIN','LA LIBERTAD','LAMBAYEQUE','LIMA','LORETO','MADRE DE DIOS','MAR'))
